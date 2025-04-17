@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ObservabilityModule } from "../lib/observability.module";
+import { ExampleController } from "./example.controller";
 
 @Module({
     imports: [
@@ -39,7 +40,7 @@ import { ObservabilityModule } from "../lib/observability.module";
             },
         }),
     ],
-    controllers: [],
+    controllers: [ExampleController],
     providers: [],
 })
 export class ExampleModule {}
