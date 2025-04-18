@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ExampleModule } from './example/example.module';
+import { TracingExamplesModule } from './example/tracing-examples.module';
 
 export const swaggerConfig = app => {
   const options = new DocumentBuilder()
-    .setTitle('ERROR MANAGER')
-    .setDescription('The ERROR MANAGER API description')
+    .setTitle('OBSERVABILITY EXAMPLE')
+    .setDescription('The OBSERVABILITY EXAMPLE API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
@@ -14,9 +14,9 @@ export const swaggerConfig = app => {
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(ExampleModule);
+  const app = await NestFactory.create(TracingExamplesModule);
   swaggerConfig(app);
-  await app.listen(3000);
-  console.log('Application is running on: http://localhost:3000');
+  await app.listen(8080);
+  console.log('Application is running on: http://localhost:8080');
 }
 bootstrap();

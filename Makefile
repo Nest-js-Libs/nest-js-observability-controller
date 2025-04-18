@@ -1,5 +1,11 @@
 .PHONY: help publish-patch publish-minor publish-major test build
 
+k8s-run-dev:
+	skaffold dev --profile=dev
+
+k8s-delete:
+	skaffold delete
+	
 help:
 	@echo "Available commands:"
 	@echo "  make publish-patch  - Increment patch version and publish"

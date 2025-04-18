@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: observability-config
+data:
+  SERVICE_NAME: "observability-app"
+  JAEGER_ENDPOINT: "http://jaeger:14268/api/traces"
+  LOKI_ENDPOINT: "http://loki:3100/loki/api/v1/push" 

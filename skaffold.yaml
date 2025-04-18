@@ -1,0 +1,31 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: observability-app
+build:
+  artifacts:
+  - image: observability-app
+    context: .
+    docker:
+      dockerfile: Dockerfile
+  local:
+    push: false
+    useBuildkit: true
+manifests:
+  kustomize:
+    paths:
+    - k8s/overlays/dev
+deploy:
+  kubectl: {}
+profiles:
+  - name: dev
+    build:
+      artifacts:
+      - image: observability-app
+        context: .
+        docker:
+          dockerfile: development.Dockerfile
+    manifests:
+      kustomize:
+        paths:
+        - k8s/
